@@ -137,7 +137,9 @@ This approach helps in determining falls by specific regions and ensuring accura
 
 ### OpenCV Implementation
 - Demo Video: [OpenCV Fall Detection Demo](#)
-- Photos: ![OpenCV Demo](#)
+- Photos:
+- <img src="images/opencv_demo1.png" alt="OpenCV Demo 1" width="200"/><img src="images/opencv_demo2.png" alt="OpenCV Demo 2" width="200"/><img src="images/opencv_demo3.png" alt="OpenCV Demo 3" width="200"/>
+
 
 ### YOLOv5 Implementation
 - Demo Video: [YOLOv5 Fall Detection Demo](#)
