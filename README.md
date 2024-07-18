@@ -1,9 +1,5 @@
 
-
-
-# Final Year Project By Rohit Prajapat(2020BITE052) 
-
-
+# Final Year Project By Rohit Prajapat (2020BITE052)
 
 ## 0. Contents
 1. Introduce
@@ -11,8 +7,11 @@
    - Why do we detect falling down?
 3. Solution
    - Technologies and Libraries Used
-       - mediapipe
-       - opencv
+       - Mediapipe
+       - OpenCV
+       - YOLOv5
+       - YOLOv8
+       - Threading
    - Establish hypotheses and explain basic logic
        - How do you measure falls?
    - Heinrich's law
@@ -20,6 +19,7 @@
    - Perspective
        - A method for measuring the fall of distant and near objects.
        - How to Calculate Falls by Region.
+4. Training YOLO Models
 
 ## 1. Introduce
 1. You can check the distance between foot C.G and body C.G.
@@ -46,10 +46,16 @@
 
 ### Technologies and Libraries Used
 #### Mediapipe
-I used [MediaPipe - Pose Estimation]. The MediaPipe Pose Landmarker task lets you detect landmarks of human bodies in an image or video.
+I used [MediaPipe - Pose Estimation](https://google.github.io/mediapipe/solutions/pose.html). The MediaPipe Pose Landmarker task lets you detect landmarks of human bodies in an image or video.
 
 #### OpenCV
-It is used to draw a line, draw a dot, and decorate the user's UI.
+OpenCV is used to draw a line, draw a dot, and decorate the user's UI.
+
+#### YOLOv5 and YOLOv8
+YOLOv5 and YOLOv8 models were trained on fall detection datasets to improve the accuracy of fall detection. These models help in identifying falls in real-time video streams.
+
+#### Threading
+Threading was utilized to ensure smooth email notifications when a fall is detected without interrupting the real-time video processing.
 
 ### Establish hypotheses and explain basic logic
 #### How do you measure falls?
@@ -61,7 +67,7 @@ First, find the rectangle's center of gravity. By dividing the human body into s
 #### Finally, we can see an example based on the previous theory
 By applying the theory of finding the C.G of body parts, you can determine the body's overall center of gravity.
 
-#### Heinrich law (Reason for measuring count)
+#### Heinrich's law (Reason for measuring count)
 According to Heinrich's Law, when a person falls more than 300 times in the same place, it leads to one serious accident. Therefore, by counting the number of falls, we need to take action before the count exceeds 300.
 
 Many people don't take falls seriously, and safety managers often have to manage too many areas. This often leads to installing safety devices only after a major accident.
@@ -73,13 +79,70 @@ We know that near and far objects have different sizes. When measuring the fall,
 #### How to Calculate Falls by Region
 To recognize when the center point of the feet is in a specific region, check if it is within a predefined range. For example, the code checks if the point of action is within certain X and Y boundaries to determine a fall and updates the fall count accordingly.
 
-```python
-if Point_of_action_X < 320 and Point_of_action_X > 100 and Point_of_action_Y > 390 and Point_of_action_Y > y and standing and stage == 'falling':               
-    cv2.putText(image, 'fall', (320, 240), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 0, 255), 2, cv2.LINE_AA)
-    stage = "standing"
-    counter_three += 1
-```
+
 
 This approach helps in determining falls by specific regions and ensuring accurate detection and counting.
-```
 
+## 4. Training YOLO Models
+
+### Steps to Train YOLOv5 and YOLOv8
+
+1. **Prepare Dataset:**
+   - Collect and annotate images with falls and non-falls.
+   - Split the dataset into training and validation sets.
+
+2. **Install Dependencies:**
+   - Install necessary libraries such as `torch`, `opencv-python`, and `yolov5`/`yolov8`.
+
+   ```sh
+   pip install torch opencv-python
+   ```
+
+3. **Clone YOLO Repository:**
+   - Clone the YOLOv5 or YOLOv8 repository from GitHub.
+
+   ```sh
+   git clone https://github.com/ultralytics/yolov5
+   cd yolov5
+   ```
+
+4. **Organize Data:**
+   - Place your images and labels in the appropriate directories as per YOLO's structure.
+   - Update the dataset configuration file with paths to your training and validation data.
+
+5. **Train the Model:**
+   - Run the training script with appropriate parameters.
+
+   ```sh
+   python train.py --img 640 --batch 16 --epochs 100 --data data.yaml --weights yolov5s.pt
+   ```
+
+   - For YOLOv8, the command might vary slightly:
+
+   ```sh
+   python train.py --img 640 --batch 16 --epochs 100 --data data.yaml --weights yolov8s.pt
+   ```
+
+6. **Evaluate the Model:**
+   - After training, evaluate the model performance on the validation set.
+
+   ```sh
+   python val.py --data data.yaml --weights runs/train/exp/weights/best.pt --img 640
+   ```
+
+7. **Deploy the Model:**
+   - Use the trained model for inference on real-time video feeds or new images.
+
+## 5. Demos and Photos
+
+### OpenCV Implementation
+- Demo Video: [OpenCV Fall Detection Demo](#)
+- Photos: ![OpenCV Demo](#)
+
+### YOLOv5 Implementation
+- Demo Video: [YOLOv5 Fall Detection Demo](#)
+- Photos: ![YOLOv5 Demo](#)
+
+### YOLOv8 Implementation
+- Demo Video: [YOLOv8 Fall Detection Demo](#)
+- Photos: ![YOLOv8 Demo](#)
