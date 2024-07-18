@@ -136,9 +136,10 @@ This approach helps in determining falls by specific regions and ensuring accura
 ## 5. Demos and Photos
 
 ### OpenCV Implementation
-- Demo Video: [OpenCV Fall Detection Demo](#)
+
 - Photos:
-- <img src="images/opencv_demo1.png" alt="OpenCV Demo 1" width="200"/><img src="images/opencv_demo2.png" alt="OpenCV Demo 2" width="200"/>
+- <img src="Fall_Detection using_yolov8\screenshot of output video frame\facv.png" alt="OpenCV Demo 1" width="200"/><img src="Fall_Detection using_yolov8\screenshot of output video frame\fa2cv.png" alt="OpenCV Demo 2" width="200"/><img src="Fall_Detection using_yolov8\screenshot of output video frame\stcv.png" alt="OpenCV Demo 3" width="200"/>
+
 
 
 
