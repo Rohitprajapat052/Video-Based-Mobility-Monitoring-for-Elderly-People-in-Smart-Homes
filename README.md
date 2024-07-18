@@ -145,5 +145,5 @@ This approach helps in determining falls by specific regions and ensuring accura
 
 ### YOLOv8 Implementation
 - Demo Video: [YOLOv8 Fall Detection Demo](#)
-- Photos:- <img src="a.png" alt="YOLOv8 Demo 1" width="200"/><img src="b.png" alt="YOLOv8 Demo 2" width="200"/><img src="c.png" alt="YOLOv8 Demo 3" width="200"/>
+- Photos:- <img src="Fall_Detection using_yolov8\screenshot of output video frame\a.png" alt="YOLOv8 Demo 1" width="200"/><img src="Fall_Detection using_yolov8\screenshot of output video frame\b.png" alt="YOLOv8 Demo 2" width="200"/><img src="Fall_Detection using_yolov8\screenshot of output video frame\c.png" alt="YOLOv8 Demo 3" width="200"/>
 
